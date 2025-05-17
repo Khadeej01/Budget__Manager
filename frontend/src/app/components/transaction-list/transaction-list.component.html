@@ -18,10 +18,10 @@
   <tbody>
     <tr *ngFor="let t of transactions" class="hover:bg-gray-50">
       <td class="py-2 px-4 border-b border-gray-300">{{ t.description }}</td>
-      <td class="py-2 px-4 border-b border-gray-300 text-right">{{ t.amount | currency:'MAD' }}</td>
+      <td class="py-2 px-4 border-b border-gray-300 text-right">{{ t.montant | currency:'MAD' }}</td>
       <td class="py-2 px-4 border-b border-gray-300 text-center">{{ t.date | date:'shortDate' }}</td>
       <td class="py-2 px-4 border-b border-gray-300 text-center capitalize">{{ t.type }}</td>
-      <td class="py-2 px-4 border-b border-gray-300">{{ t.category }}</td>
+      <td class="py-2 px-4 border-b border-gray-300">{{ t.categorie }}</td>
       <td class="py-2 px-4 border-b border-gray-300 text-center space-x-2">
         <a [routerLink]="['/edit', t.id]" class="text-yellow-600 hover:text-yellow-800">Modifier</a>
         <button (click)="deleteTransaction(t.id!)" class="text-red-600 hover:text-red-800">Supprimer</button>
