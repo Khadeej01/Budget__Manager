@@ -1,9 +1,11 @@
-
-export interface Transaction {
-  id?: number;
+export interface TransactionDTO {
+  id: number;
   description: string;
   montant: number;
   date: string;
-  categorie: string;
   type: string;
+  categorie: string;
 }
+
+
+
