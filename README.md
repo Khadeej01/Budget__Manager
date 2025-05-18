@@ -1,4 +1,4 @@
-# Budget__Manager
+
 # Budget-Manager
 
 Budget Manager est une application web conçue pour aider les utilisateurs à gérer leurs finances de manière pratique et efficace. Elle permet de suivre les dépenses et revenus, de définir des budgets par catégorie, et de personnaliser les catégories pour organiser les transactions. L'application offre une interface utilisateur intuitive et responsive, avec des fonctionnalités de création, consultation, modification, et suppression des transactions, budgets, et catégories.
