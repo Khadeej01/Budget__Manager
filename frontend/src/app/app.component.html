@@ -1,8 +1,6 @@
-<nav class="p-4 bg-gray-800 text-white flex justify-between">
-  <a routerLink="/" class="text-lg font-bold">Home</a>
-  <a routerLink="/transactions" class="hover:underline">Transactions</a>
+<nav class="flex gap-4 p-4 bg-gray-800 text-white">
+  <a routerLink="/transaction-list" routerLinkActive="font-bold">Transactions</a>
+  <a routerLink="/add" routerLinkActive="font-bold">Ajouter</a>
 </nav>
 
-<main class="p-4">
-  <router-outlet></router-outlet>
-</main>
+<router-outlet></router-outlet>

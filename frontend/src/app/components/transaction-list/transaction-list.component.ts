@@ -1,30 +1,54 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TransactionService } from '../../services/transaction.service';
-import { Transaction } from '../../models/transaction.model';
+import { TransactionDTO } from '../../models/transaction.model';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-transaction-list',
-  templateUrl: './transaction-list.component.html',
   standalone: true,
-  imports: [CommonModule, RouterModule],
-  providers: [CurrencyPipe, DatePipe]
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  templateUrl: './transaction-list.component.html'
 })
 export class TransactionListComponent implements OnInit {
-  transactions: Transaction[] = [];
+  transactions: TransactionDTO[] = [];
+  filterForm!: FormGroup;
 
-  constructor(private transactionService: TransactionService) {}
+  constructor(private service: TransactionService, private fb: FormBuilder) {}
 
   ngOnInit() {
+    this.filterForm = this.fb.group({
+      categorie: [''],
+      type: [''],
+      startDate: [''],
+      endDate: ['']
+    });
+
     this.loadTransactions();
   }
 
-  loadTransactions() {
-    this.transactionService.getAll().subscribe(data => this.transactions = data);
+  loadTransactions(filters?: any) {
+    this.service.getAll(filters).subscribe(data => {
+      this.transactions = data;
+    });
   }
 
-  deleteTransaction(id: number) {
-    this.transactionService.delete(id).subscribe(() => this.loadTransactions());
+  applyFilters() {
+    const filters = this.filterForm.value;
+    this.loadTransactions(filters);
+  }
+
+  resetFilters() {
+    this.filterForm.reset();
+    this.loadTransactions();
+  }
+
+  onDelete(id: number) {
+    if (confirm("Voulez-vous vraiment supprimer cette transaction ?")) {
+      this.service.delete(id).subscribe(() => {
+        this.loadTransactions();
+      });
+    }
   }
 }
