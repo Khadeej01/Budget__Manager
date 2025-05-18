@@ -1,5 +1,8 @@
 package org.budgetmanager.backend.service;
 
+
+public class TransactionService {
+
 import org.budgetmanager.backend.dto.TransactionDTO;
 import org.budgetmanager.backend.entity.Transaction;
 import org.budgetmanager.backend.exception.ResourceNotFoundException;
@@ -57,4 +60,5 @@ public class TransactionService {
     public void deleteTransaction(Long id) {
         transactionRepository.deleteById(id);
     }
+
 }
