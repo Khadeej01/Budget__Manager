@@ -1,0 +1,10 @@
+<form (ngSubmit)="submitBudget()">
+  <input type="number" [(ngModel)]="budget.amount" name="amount" placeholder="Montant" required />
+
+  <select [(ngModel)]="budget.categoryId" name="categoryId" required>
+    <option value="">-- Choisir une catégorie --</option>
+    <option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</option>
+  </select>
+
+  <button type="submit">Ajouter Budget</button>
+</form>
