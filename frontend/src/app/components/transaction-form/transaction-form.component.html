@@ -1,31 +1,83 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="max-w-md mx-auto p-4 bg-white rounded">
-  <div class="mb-4">
-    <label class="block font-bold">Description:</label>
-    <input type="text" formControlName="description" class="w-full border p-2 rounded" />
-  </div>
+<div class="max-w-xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-md">
+  <h2 class="text-2xl font-bold text-center mb-6">
+    {{ isEdit ? 'Modifier une transaction' : 'Ajouter une transaction' }}
+  </h2>
 
-  <div class="mb-4">
-    <label class="block font-bold">Montant:</label>
-    <input type="number" formControlName="montant" class="w-full border p-2 rounded" />
-  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
+    <!-- Description Field -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Description</label>
+      <input type="text" formControlName="description" class="w-full p-2 border rounded" />
+      <div *ngIf="form.get('description')?.invalid && form.get('description')?.touched" class="text-red-500 text-sm">
+        Description is required
+      </div>
+    </div>
 
-  <div class="mb-4">
-    <label class="block font-bold">Date:</label>
-    <input type="date" formControlName="date" class="w-full border p-2 rounded" />
-  </div>
+    <!-- Amount Field -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Montant</label>
+      <input type="number" formControlName="montant" class="w-full p-2 border rounded" />
+      <div *ngIf="form.get('montant')?.invalid && form.get('montant')?.touched" class="text-red-500 text-sm">
+        <div *ngIf="form.get('montant')?.errors?.['required']">Amount is required</div>
+        <div *ngIf="form.get('montant')?.errors?.['min']">Amount must be positive</div>
+      </div>
+    </div>
 
-  <div class="mb-4">
-    <label class="block font-bold">Type:</label>
-    <select formControlName="type" class="w-full border p-2 rounded">
-      <option value="dépense">Dépense</option>
-      <option value="revenu">Revenu</option>
-    </select>
-  </div>
+    <!-- Date Field -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Date</label>
+      <input type="date" formControlName="date" class="w-full p-2 border rounded" />
+      <div *ngIf="form.get('date')?.invalid && form.get('date')?.touched" class="text-red-500 text-sm">
+        Date is required
+      </div>
+    </div>
 
-  <div class="mb-4">
-    <label class="block font-bold">Catégorie:</label>
-    <input type="text" formControlName="categorie" class="w-full border p-2 rounded" />
-  </div>
+    <!-- Type Field -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Type</label>
+      <select formControlName="type" class="w-full p-2 border rounded">
+        <option value="income">Revenu</option>
+        <option value="expense">Dépense</option>
+      </select>
+    </div>
+    <!-- Category Field -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Catégorie</label>
+      <select formControlName="categorie" class="w-full p-2 border rounded">
+        <option value="">-- Sélectionnez --</option>
+        <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+      </select>
+      <div *ngIf="form.get('categorie')?.invalid && form.get('categorie')?.touched" class="text-red-500 text-sm">
+        Category is required
+      </div>
+    </div>
 
-  <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Valider</button>
-</form>
+    <!-- Buttons -->
+    <div class="flex justify-between mt-6">
+      <button
+        type="submit"
+        [disabled]="form.invalid"
+        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:bg-blue-300 disabled:cursor-not-allowed">
+        {{ isEdit ? 'Modifier' : 'Valider' }}
+      </button>
+
+      <button
+        type="button"
+        (click)="onCancel()"
+        class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">
+        Annuler
+      </button>
+
+      <a routerLink="/transaction-list" class="text-blue-600 underline self-center hover:text-blue-800">
+        Retour à la liste
+      </a>
+    </div>
+  </form>
+
+  <!-- Debug form state -->
+  <div class="mt-4 text-sm text-gray-500">
+    <div>Form valid: {{ form.valid }}</div>
+    <div>Form touched: {{ form.touched }}</div>
+    <div>Form errors: {{ form.errors | json }}</div>
+  </div>
+</div>
