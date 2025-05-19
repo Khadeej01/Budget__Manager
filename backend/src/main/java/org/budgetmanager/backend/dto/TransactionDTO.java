@@ -1,5 +1,11 @@
 package org.budgetmanager.backend.dto;
 
+public class TransactionDTO {
+}
+
+
+package org.budgetmanager.backend.dto;
+
 import lombok.Data;
 import java.time.LocalDate;
 
@@ -12,3 +18,6 @@ public class TransactionDTO {
     private String type;
     private String categorie;
 }
+
+
+

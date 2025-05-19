@@ -1,5 +1,8 @@
 package org.budgetmanager.backend.entity;
 
+
+public class Transaction {
+
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
@@ -33,4 +36,5 @@ public class Transaction {
 
     public String getType() { return type; }
     public void setType(String type) { this.type = type; }
+
 }
