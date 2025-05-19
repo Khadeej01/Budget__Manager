@@ -48,6 +48,7 @@ export class TransactionListComponent implements OnInit {
     if (confirm("Voulez-vous vraiment supprimer cette transaction ?")) {
       this.service.delete(id).subscribe(() => {
         this.loadTransactions();
+        this.loadTransactions();
       });
     }
   }
