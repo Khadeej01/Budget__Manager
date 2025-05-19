@@ -9,10 +9,11 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private double montant;
     private String categorie;
     private String description;
-    private LocalDate dateTransaction;
+    private LocalDate date;  
     private String type;
 
     public Long getId() { return id; }
@@ -27,8 +28,8 @@ public class Transaction {
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
 
-    public LocalDate getDateTransaction() { return dateTransaction; }
-    public void setDateTransaction(LocalDate dateTransaction) { this.dateTransaction = dateTransaction; }
+    public LocalDate getDate() { return date; }
+    public void setDate(LocalDate date) { this.date = date; }
 
     public String getType() { return type; }
     public void setType(String type) { this.type = type; }
