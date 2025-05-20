@@ -1,8 +1,6 @@
 package org.budgetmanager.backend.entity;
 
 
-public class Transaction {
-
 import jakarta.persistence.*;
 import java.time.LocalDate;
 

@@ -6,7 +6,7 @@ import {BudgetListComponent} from './components/budget-list/budget-list.componen
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, BudgetFormComponent, BudgetListComponent],
+  imports: [RouterOutlet, BudgetFormComponent, BudgetListComponent,NavbarComponent,RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
