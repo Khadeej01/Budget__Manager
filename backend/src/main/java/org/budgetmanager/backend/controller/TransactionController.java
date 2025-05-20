@@ -1,8 +1,5 @@
 package org.budgetmanager.backend.controller;
 
-
-public class TransactionController {
-
 import org.budgetmanager.backend.dto.TransactionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;

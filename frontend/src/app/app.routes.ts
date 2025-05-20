@@ -8,13 +8,15 @@ import { BudgetCreateComponent } from './components/budget-create/budget-create.
 
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'transaction-list', pathMatch: 'full' },
+
 
   { path: 'transaction-list', component: TransactionListComponent },
   { path: 'add', component: TransactionFormComponent },
   { path: 'edit/:id', component: TransactionFormComponent },
   { path: '', component: HomeComponent },
   { path: 'ajouter-budget', component: BudgetFormComponent },
+  { path: 'budget-list', component: BudgetListComponent },
+
   { path: '', component: BudgetListComponent },
   { path: 'create', component: BudgetCreateComponent }
 

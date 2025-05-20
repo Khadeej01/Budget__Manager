@@ -1,1 +1,13 @@
-<p>navbar works!</p>
+<nav class="bg-blue-600 p-4 text-white shadow-md">
+  <div class="container mx-auto flex justify-between items-center">
+    <a routerLink="/" class="text-xl font-bold hover:text-yellow-300">Budget Manager</a>
+    <ul class="flex space-x-4">
+      <li><a routerLink="/" routerLinkActive="text-yellow-300" class="hover:text-yellow-300">Accueil</a></li>
+      <li><a routerLink="/transaction-list" routerLinkActive="text-yellow-300" class="hover:text-yellow-300">Transactions</a></li>
+      <li><a routerLink="/add" routerLinkActive="text-yellow-300" class="hover:text-yellow-300">Ajouter Transaction</a></li>
+      <li><a routerLink="/budget-list" routerLinkActive="text-yellow-300" class="hover:text-yellow-300">Budgets</a></li>
+      <li><a routerLink="/ajouter-budget" routerLinkActive="text-yellow-300" class="hover:text-yellow-300">Ajouter Budget</a></li>
+      <li><a routerLink="/create" routerLinkActive="text-yellow-300" class="hover:text-yellow-300">Créer Budget</a></li>
+    </ul>
+  </div>
+</nav>

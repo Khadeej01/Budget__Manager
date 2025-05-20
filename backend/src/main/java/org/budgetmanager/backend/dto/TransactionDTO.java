@@ -1,11 +1,5 @@
 package org.budgetmanager.backend.dto;
 
-public class TransactionDTO {
-}
-
-
-package org.budgetmanager.backend.dto;
-
 import lombok.Data;
 import java.time.LocalDate;
 
